@@ -6,7 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import javax.swing.text.html.HTML;
 
-import com.web.util.ExUtil;
+import com.web.model.ExUtil;
 
 /* 
  servlet¿« ∞Ò∞›

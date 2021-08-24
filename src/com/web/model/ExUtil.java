@@ -1,4 +1,4 @@
-package com.web.util;
+package com.web.model;
 
 public class ExUtil {
 	public int sum() {

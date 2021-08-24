@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-<%@ page import = "com.web.util.*" %>
+<%@ page import = "com.web.model.*" %>
 <%
 ExUtil ex = new ExUtil();
 int sum = ex.sum();
