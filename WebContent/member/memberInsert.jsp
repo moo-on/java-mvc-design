@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="com.web.model.*" %>    <%
-                // 파라메터수집(VO)
-                request.setCharacterEncoding("utf-8");
+// 파라메터수집(VO)
+request.setCharacterEncoding("utf-8");
 // 1. 파라메터수집(VO)
 String id=request.getParameter("id");
 String pass=request.getParameter("pass");
