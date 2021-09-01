@@ -1,7 +1,7 @@
 # jsp-tutorial
-### MVC1: https://github.com/moo-on/jsp-tutorial/blob/MVC1/README.md
-### MVC2:
-### MVC3:
-### MVC4:
-### MVC5:
-### MVC6:
+**MVC2** is consist of only view(jsp) & model 
+
+### view
+insert delete update showList showPrivateContent
+### model
+ModelVO & ModelDVO (use JDBC)
