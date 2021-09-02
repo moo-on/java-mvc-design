@@ -15,11 +15,11 @@ public class RedirectController extends HttpServlet {
 		
 		String data = "apple";
 		// View page(jsp)로 전달 후 출력
-		response.sendRedirect("view/result.jsp?data="+data);
+		response.sendRedirect("view/redirect.jsp?data="+data);
 	}
 }
 
 /*
- redirect 기법은 클라이언트가 서버에 기존 요청을 끊고 새로운 요청을 보내므로, request 객체 역시 새롭게 바뀐다.
+ redirect 기법은(queryString) 클라이언트가 서버에 기존 요청을 끊고 새로운 요청을 보내므로, request 객체 역시 새롭게 바뀐다.
  
  */
