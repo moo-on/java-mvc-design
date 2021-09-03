@@ -2,9 +2,7 @@
     pageEncoding="EUC-KR"%>
 <%@ page import="com.web.model.*" %>
 <%
-  int num=Integer.parseInt(request.getParameter("num"));
-  MemberDAO dao=new MemberDAO();
-  MemberVO vo=dao.memberContent(num);
+  MemberVO vo = (MemberVO)request.getAttribute("vo") ;
 %>    
 <!DOCTYPE html>
 <html>
@@ -17,7 +15,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="memberUpdate.jsp" method = "post">
+<form action="memberUpdate.do" method = "post">
 <input type="hidden" name="num" value="<%=vo.getNum()%>"/>
 <table class='table table-bordered'>
 <%  if(vo!=null){ %>
@@ -61,7 +59,7 @@
     <td colspan="2" align="center">
        <input type="submit" value="수정하기" class='btn btn-primary'/>
        <input type="reset" value="취소" class='btn btn-warning'/>
-       <input type="button" value="리스트" onclick="location.href='memberList.jsp'" class='btn'/>
+       <input type="button" value="리스트" onclick="location.href='memberList.do'" class='btn'/>
     </td>
   </tr>
 </table>

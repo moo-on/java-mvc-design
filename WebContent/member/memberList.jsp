@@ -2,9 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ page import="com.web.model.*" %>    <%@ page import="java.util.*" %>
 <%
-  MemberDAO dao=new MemberDAO();
-  ArrayList<MemberVO> list=dao.memberList();
-%>    <!DOCTYPE html>
+	ArrayList<MemberVO> list = (ArrayList<MemberVO>)request.getAttribute("list");
+%>    
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -15,7 +15,7 @@
 <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js'></script>
 <script type="text/javascript">
   function deleteFn(num){
-  location.href="memberDelete.jsp?num="+num; // ?num=12
+  location.href="memberDelete.do?num="+num; // ?num=12
   }
 </script>
 </head>
@@ -34,7 +34,7 @@
   <% for(MemberVO vo : list){ %>
       <tr>
         <td><%=vo.getNum()%></td>
-        <td><a href="memberContent.jsp?num=<%=vo.getNum()%>"><%=vo.getId()%></a></td>
+        <td><a href="memberContent.do?num=<%=vo.getNum()%>"><%=vo.getId()%></a></td>
         <td><%=vo.getPass()%></td>
         <td><%=vo.getName()%></td>
         <td><%=vo.getAge()%></td>
@@ -46,7 +46,7 @@
   <% } %>
   <tr>
   <td colspan="8" align="right"><input type="button" value="회원가입" class="btn btn-primary"
-                                             onclick="location.href='memberRegister.html'"/></td>
+                                             onclick="location.href='member/memberRegister.html'"/></td>
   </tr>
 </table>
 </body>
