@@ -46,7 +46,7 @@
   </c:forEach>
   <tr>
   <td colspan="8" align="right"><input type="button" value="회원가입" class="btn btn-primary"
-                                             onclick="location.href='memberRegister.html'"/></td>
+                                             onclick="location.href='/jsp-tutorial/memberRegister.do'"/></td>
   </tr>
 </table>
 </body>

@@ -18,7 +18,6 @@ import com.web.model.MemberVO;
  */
 @WebServlet("/memberContent.do")
 public class MemberContentController extends HttpServlet {
-	private static final long serialVersionUID = 1L;
        
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
