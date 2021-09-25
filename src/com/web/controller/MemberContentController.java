@@ -29,7 +29,7 @@ public class MemberContentController implements Controller {
 		
 		// 객체 바인딩
 		request.setAttribute("vo", vo);
-		return "member/memberContent.jsp";
+		return "WEB-INF/member/memberContent.jsp";
 	}
        
 	

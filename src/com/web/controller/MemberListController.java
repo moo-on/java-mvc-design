@@ -23,7 +23,7 @@ public class MemberListController implements Controller{
 		MemberDAO dao = new MemberDAO();
 		List<MemberVO> list = dao.memberList();
 		request.setAttribute("list", list);
-		return "member/memberList.jsp";
+		return "/WEB-INF/member/memberList.jsp";
 			
 	}
 }
