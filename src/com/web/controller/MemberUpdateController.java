@@ -13,13 +13,12 @@ import com.web.model.MemberVO;
 /**
  * Servlet implementation class MemberUpdateController
  */
-@WebServlet("/memberUpdate.do")
-public class MemberUpdateController extends HttpServlet {
+public class MemberUpdateController implements Controller {
 
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		request.setCharacterEncoding("utf-8");
-		
+	@Override
+	public String requestHandler(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		int num = Integer.parseInt(request.getParameter("num"));
 		int age = Integer.parseInt(request.getParameter("age"));
 		String email = request.getParameter("email");
@@ -33,14 +32,16 @@ public class MemberUpdateController extends HttpServlet {
 		
 		MemberDAO dao = new MemberDAO();
 		int cnt = dao.memberUpdate(vo);
-
+		String nextPage = null;
 		if (cnt>0) {
-			response.sendRedirect("/jsp-tutorial/memberList.do");
+			nextPage = "memberList.do";
 		}
 		else {
 			throw new ServletException("not insert");
 		}
-		
+		return nextPage;
 	}
+
+	
 
 }

@@ -16,11 +16,12 @@ import com.web.model.MemberVO;
 /**
  * Servlet implementation class MemberContentController
  */
-@WebServlet("/memberContent.do")
-public class MemberContentController extends HttpServlet {
-       
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
+public class MemberContentController implements Controller {
+
+	@Override
+	public String requestHandler(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		int num = Integer.parseInt(request.getParameter("num"));
 		
 		MemberDAO dao = new MemberDAO();
@@ -28,9 +29,8 @@ public class MemberContentController extends HttpServlet {
 		
 		// °´Ã¼ ¹ÙÀÎµù
 		request.setAttribute("vo", vo);
-		RequestDispatcher rd = request.getRequestDispatcher("member/memberContent.jsp");
-		rd.forward(request, response);
-		
-
+		return "member/memberContent.jsp";
 	}
+       
+	
 }
