@@ -36,45 +36,50 @@ public class MemberFrontController extends HttpServlet {
 		Controller controller = null; 
 		String nextPage = null;
 		//분기 작업
+		// controller를 생성 후 request, response객체 넘겨줘서 일을 한 후 다음 페이지 까지 받아와서 넘겨주는 것이 pojo의 역할
 		// List view
 		if(command.equals("/memberList.do")) {
 			controller = new MemberListController();
 			nextPage = controller.requestHandler(request, response);
-			// controller를 생성 후 request, response객체 넘겨줘서 일을 한 후 다음 페이지 까지 받아와서 넘겨주는 것이 pojo의 역할
-			RequestDispatcher rd = request.getRequestDispatcher(nextPage);
-			rd.forward(request, response);
-		}
+		}	
 		// insert func
 		else if(command.equals("/memberInsert.do")) {
 			controller = new MemberInsertController();
 			nextPage = controller.requestHandler(request, response);
-			response.sendRedirect(nextPage);
 		}
 		// register view
 		else if(command.equals("/memberRegister.do")) {
 			controller = new MemberRegisterController();
 			nextPage = controller.requestHandler(request, response);
-			RequestDispatcher rd = request.getRequestDispatcher("member/memberRegister.html");
-			rd.forward(request, response);
+
 		}
 		// content view
 		else if(command.equals("/memberContent.do")) {
 			controller = new MemberContentController();
 			nextPage = controller.requestHandler(request, response);
-			RequestDispatcher rd = request.getRequestDispatcher(nextPage);
-			rd.forward(request, response);
+
 		}
 		// Update func
 		else if(command.equals("/memberUpdate.do")) {
 			controller = new MemberUpdateController();
 			nextPage = controller.requestHandler(request, response);
-			response.sendRedirect(nextPage);
+
 		}
 		// Delete func
 		else if(command.equals("/memberDelete.do")) {
 			controller = new MemberDeleteController();
 			nextPage = controller.requestHandler(request, response);
-			response.sendRedirect(nextPage);
+
+		}
+		// forward redirect 분리
+		if(nextPage!=null) {
+			if(nextPage.indexOf("redirect:")!=-1) {
+				response.sendRedirect(nextPage.split(":")[1]); //redirect
+			}
+			else {
+				RequestDispatcher rd = request.getRequestDispatcher(nextPage);
+				rd.forward(request, response);
+			}
 		}
 		
 	}

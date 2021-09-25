@@ -44,7 +44,7 @@ public class MemberInsertController implements Controller{
 				int cnt = dao.memberInsert(vo);
 				if(cnt == 1) {
 					//성공
-					nextPage = "/jsp-tutorial/memberList.do";
+					nextPage = "redirect:/jsp-tutorial/memberList.do";
 				}else {
 					//실패 예외객체 생성 후 WAS에게 전달
 					throw new ServletException("not insert");

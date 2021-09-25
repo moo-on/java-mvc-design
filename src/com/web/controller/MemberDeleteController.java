@@ -25,7 +25,7 @@ public class MemberDeleteController implements Controller {
 		int cnt = dao.memberDelete(num);
 		String nextPage = null;
 		if (cnt>0) {
-			nextPage = "/jsp-tutorial/memberList.do";
+			nextPage = "redirect:/jsp-tutorial/memberList.do";
 		}
 		else {
 			throw new ServletException("not insert");

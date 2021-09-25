@@ -34,7 +34,7 @@ public class MemberUpdateController implements Controller {
 		int cnt = dao.memberUpdate(vo);
 		String nextPage = null;
 		if (cnt>0) {
-			nextPage = "memberList.do";
+			nextPage = "redirect:/jsp-tutorial/memberList.do";
 		}
 		else {
 			throw new ServletException("not insert");

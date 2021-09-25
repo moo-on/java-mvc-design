@@ -27,7 +27,7 @@ public class MemberContentController implements Controller {
 		MemberDAO dao = new MemberDAO();
 		MemberVO vo = dao.memberContent(num);
 		
-		// 객체 바인딩
+		// 객체 바인딩 
 		request.setAttribute("vo", vo);
 		return "WEB-INF/member/memberContent.jsp";
 	}
