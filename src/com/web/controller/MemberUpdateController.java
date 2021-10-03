@@ -18,7 +18,9 @@ public class MemberUpdateController implements Controller {
 	@Override
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		
+		String ctx = request.getContextPath(); //jsp-tutorial
+		
 		int num = Integer.parseInt(request.getParameter("num"));
 		int age = Integer.parseInt(request.getParameter("age"));
 		String email = request.getParameter("email");
@@ -34,7 +36,7 @@ public class MemberUpdateController implements Controller {
 		int cnt = dao.memberUpdate(vo);
 		String nextPage = null;
 		if (cnt>0) {
-			nextPage = "redirect:/jsp-tutorial/memberList.do";
+			nextPage = "redirect:"+ctx+"/memberList.do";
 		}
 		else {
 			throw new ServletException("not insert");

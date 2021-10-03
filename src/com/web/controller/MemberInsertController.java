@@ -18,6 +18,8 @@ public class MemberInsertController implements Controller{
 	@Override
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+				
+		String ctx = request.getContextPath(); //jsp-tutorial
 
 		// 1.파리미터 수집(VO)
 				String id = request.getParameter("id");
@@ -44,7 +46,7 @@ public class MemberInsertController implements Controller{
 				int cnt = dao.memberInsert(vo);
 				if(cnt == 1) {
 					//성공
-					nextPage = "redirect:/jsp-tutorial/memberList.do";
+					nextPage = "redirect:"+ctx+"/memberList.do";
 				}else {
 					//실패 예외객체 생성 후 WAS에게 전달
 					throw new ServletException("not insert");

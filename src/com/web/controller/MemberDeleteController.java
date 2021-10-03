@@ -19,13 +19,16 @@ public class MemberDeleteController implements Controller {
 	@Override
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		String ctx = request.getContextPath(); //jsp-tutorial
+		
 		int num = Integer.parseInt(request.getParameter("num"));
 		
 		MemberDAO dao = new MemberDAO();
 		int cnt = dao.memberDelete(num);
 		String nextPage = null;
 		if (cnt>0) {
-			nextPage = "redirect:/jsp-tutorial/memberList.do";
+			nextPage = "redirect:"+ctx+"/memberList.do";
 		}
 		else {
 			throw new ServletException("not insert");
