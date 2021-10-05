@@ -19,18 +19,18 @@ import com.web.model.MemberVO;
 
 public class MemberContentController implements Controller {
 
-	@Override
-	public String requestHandler(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		int num = Integer.parseInt(request.getParameter("num"));
-		
-		MemberDAO dao = new MemberDAO();
-		MemberVO vo = dao.memberContent(num);
-		
-		// ∞¥√º πŸ¿Œµ˘ 
-		request.setAttribute("vo", vo);
-		return "memberContent";
-	}
-       
-	
+    @Override
+    public String requestHandler(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        int num = Integer.parseInt(request.getParameter("num"));
+
+        MemberDAO dao = new MemberDAO();
+        MemberVO vo = dao.memberContent(num);
+
+        // Í∞ùÏ≤¥ Î∞îÏù∏Îî©
+        request.setAttribute("vo", vo);
+        return "memberContent";
+    }
+
+
 }

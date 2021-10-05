@@ -26,33 +26,34 @@ import java.util.*;
  */
 @WebServlet("*.do")
 public class MemberFrontController extends HttpServlet {
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = request.getRequestURI();
-		String ctx = request.getContextPath(); // ctx = jsp-tutorial
-		String command = url.substring(ctx.length()); // URI= jsp-tutorial/memberInster.do, command = memberInsert.do
-		System.out.println(command);
-		request.setCharacterEncoding("euc-kr"); // memberInsert¿¡¼­ ¼Ó¼º ÀúÀå ½Ã ÇÑ±Û °ª ±úÁü ¹æÁö
-		
-		Controller controller = null; 
-		String nextPage = null;
-		
-		// controller¸¦ »ı¼º ÈÄ request, response°´Ã¼ ³Ñ°ÜÁà¼­ ÀÏÀ» ÇÑ ÈÄ ´ÙÀ½ ÆäÀÌÁö ±îÁö ¹Ş¾Æ¿Í¼­ ³Ñ°ÜÁÖ´Â °ÍÀÌ pojoÀÇ ¿ªÇÒ
-		// List view
-		HandlerMapping mapping = new HandlerMapping();
-		controller = mapping.getController(command);
-		nextPage = controller.requestHandler(request, response);
-		
-		// forward redirect ºĞ¸®
-		if(nextPage!=null) {
-			if(nextPage.indexOf("redirect:")!=-1) {
-				response.sendRedirect(nextPage.split(":")[1]); //redirect
-			}
-			else {
-				RequestDispatcher rd = request.getRequestDispatcher(ViewResolver.makeView(nextPage));
-				rd.forward(request, response);
-			}
-		}
-		
-	}
+    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String url = request.getRequestURI();
+        String ctx = request.getContextPath(); // ctx = jsp-tutorial
+        System.out.println(ctx);
+        String command = url.substring(ctx.length()); // URI= jsp-tutorial/memberInsert.do, command = memberInsert.do
+        System.out.println(command);
+        request.setCharacterEncoding("euc-kr"); // memberInsert ì—ì„œ ì†ì„± ì €ì¥ ì‹œ í•œê¸€ ê°’ ê¹¨ì§ ë°©ì§€
+
+        Controller controller = null;
+        String nextPage = null;
+
+        // controller ìƒì„± í›„ request, response ê°ì²´ ë„˜ê²¨ì¤˜ì„œ ì¼ì„ í•œ í›„ ë‹¤ìŒ í˜ì´ì§€ ê¹Œì§€ ë°›ì•„ì™€ì„œ ë„˜ê²¨ì£¼ëŠ” ê²ƒì´ pojo ì˜ ì—­í• 
+        // List view
+        HandlerMapping mapping = new HandlerMapping();
+        controller = mapping.getController(command);
+        nextPage = controller.requestHandler(request, response);
+
+        // forward redirect ë¶„ë¦¬
+        if(nextPage!=null) {
+            if(nextPage.indexOf("redirect:")!=-1) {
+                response.sendRedirect(nextPage.split(":")[1]); //redirect
+            }
+            else {
+                RequestDispatcher rd = request.getRequestDispatcher(ViewResolver.makeView(nextPage));
+                rd.forward(request, response);
+            }
+        }
+
+    }
 
 }

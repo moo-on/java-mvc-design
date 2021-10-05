@@ -17,15 +17,15 @@ import com.web.model.MemberVO;
 
 public class MemberListController implements Controller{
 
-	@Override
-	public String requestHandler(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		MemberDAO dao = new MemberDAO();
-		List<MemberVO> list = dao.memberList();
-		request.setAttribute("list", list);
-		return "memberList";
-			
-	}
+    @Override
+    public String requestHandler(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        MemberDAO dao = new MemberDAO();
+        List<MemberVO> list = dao.memberList();
+        request.setAttribute("list", list);
+        return "memberList";
+
+    }
 }
 
-//list pojoÀÇ ÀÏ : °´Ã¼¹ÙÀÎµù°ú ´ÙÀ½ ÆäÀÌÁö ±îÁö 
+//list pojoì˜ ì¼ : ê°ì²´ë°”ì¸ë”©ê³¼ ë‹¤ìŒ í˜ì´ì§€ ê¹Œì§€

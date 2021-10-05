@@ -17,23 +17,23 @@ import com.web.model.MemberVO;
 @WebServlet("/fc.do")
 public class ForwardController extends HttpServlet {
 
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		String name = "moon";
-		int age = 19;
-		String email = "w@naver.com";
-		
-		MemberVO vo = new MemberVO();
-		vo.setName(name);
-		vo.setAge(age);
-		vo.setEmail(email);
-		
-		// forward.jsp
-			// °´Ã¼¹ÙÀÎµù
-		request.setAttribute("vo", vo);
-			// forward
-		RequestDispatcher rd = request.getRequestDispatcher("view/forward.jsp");
-		rd.forward(request, response);
-	}
+    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // TODO Auto-generated method stub
+        String name = "moon";
+        int age = 19;
+        String email = "w@naver.com";
+
+        MemberVO vo = new MemberVO();
+        vo.setName(name);
+        vo.setAge(age);
+        vo.setEmail(email);
+
+        // forward.jsp
+        // ê°ì²´ë°”ì¸ë”©
+        request.setAttribute("vo", vo);
+        // forward
+        RequestDispatcher rd = request.getRequestDispatcher("view/forward.jsp");
+        rd.forward(request, response);
+    }
 }
-// ÇØ´ç ¿äÃ»Àº forward.jsp·Î ¿äÃ»À» ÀÇ·Ú(RequestDispatcher)ÇÏ°í ´Ù½Ã ÄÁÆ®·Ñ·¯¿¡ ÀÀ´äÀ» ÇÏ±â¿¡, forward.jsp´Â ³ëÃâµÇÁö ¾Ê´Â´Ù.
+// í•´ë‹¹ ìš”ì²­ì€ forward.jspë¡œ ìš”ì²­ì„ ì˜ë¢°(RequestDispatcher)í•˜ê³  ë‹¤ì‹œ ì»¨íŠ¸ë¡¤ëŸ¬ì— ì‘ë‹µì„ í•˜ê¸°ì—, forward.jspëŠ” ë…¸ì¶œë˜ì§€ ì•ŠëŠ”ë‹¤.

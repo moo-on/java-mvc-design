@@ -1,27 +1,29 @@
--- member table 
+-- member table
 create table member(
-num int primary key auto_increment,
-id varchar(20) not null,
-pass varchar(20) not null,
-name varchar(30) not null,
-age int not null,
-email varchar(30) not null,
-phone varchar(30) not null,
+                       num int primary key auto_increment,
+                       id varchar(20) not null,
+                       pass varchar(20) not null,
+                       name varchar(30) not null,
+                       age int not null,
+                       email varchar(30) not null,
+                       phone varchar(30) not null,
 
-unique key(id)
+                       unique key(id)
 );
 -- SQL(CRUD), JDBC
+-- ë°ì´í„°ë² ì´ìŠ¤ ì„ íƒ
+use test;
+-- ê²€ìƒ‰
 
---°Ë»ö
 select * from member;
 
 -- insert
 insert into member(id, pass, name, age, email, phone)
-value('admin','admin','°ü¸®ÀÚ','19','ex@gmail.com','010-0000-0000');
+    value('admin','admin','ê´€ë¦¬ì','19','ex@gmail.com','010-0000-0000');
 
 -- update
 update member set age = 20, phone = '010-1111-1111' where id = 'admin';
 
 -- delete
-delete from meber where id = 'admin';
+delete from member where id = 'admin';
 drop table member

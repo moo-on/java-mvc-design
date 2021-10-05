@@ -4,159 +4,159 @@ import java.sql.*;
 import java.util.*;
 
 public class MemberDAO {
-	private Connection conn;
-	private PreparedStatement ps;
-	private ResultSet rs;
-	
-	//  µ¥ÀÌÅÍº£ÀÌ½º ¿¬°á°´Ã¼ »ı¼º
-	public void getConnect() {
-		String URL = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC&characterEncoding=UTF-8";
-		String user = "root";
-		String password ="rkwodml1";
-		
-		// MySQL Driver Loading
-		try {
-		/*Á¤Àû·Îµù
-		 * DriverManager driver = new com.mys ql.jdbc.Driver();
-		 * conn = driver.getConnection(URL, user, password);
-		 */
-		// µ¿Àû·Îµù - ÄÄÆÄÀÏ ½ÃÁ¡¿¡´Â ´Ü¼ø ¹®ÀÚ¿­, ½ÇÇà ÁöÁ¡¿¡ Driver class¸¦ ¸Ş¸ğ¸®¿¡ ¿Ã¸²  
-		Class.forName("com.mysql.jdbc.Driver");
-		conn = DriverManager.getConnection(URL, user, password);
-		} catch(Exception e) {
-		e.printStackTrace();
-		}
-	}
-	
-	public int memberInsert(MemberVO vo) {
-		String SQL = "insert into member(id, pass, name, age, email, phone) values(?,?,?,?,?,?)";
-		//SQL Àü¼Û°´Ã¼ »ı¼º
-		getConnect();
-		int cnt = -1;
-		try {
-			ps = conn.prepareStatement(SQL);//¹Ì¸® ÄÄÆÄÀÏÀ» ½ÃÅ²´Ù. ¼Óµµ µî ÀåÁ¡
-			ps.setString(1, vo.getId());
-			ps.setString(2, vo.getPass());
-			ps.setString(3, vo.getName());
-			ps.setInt(4, vo.getAge());
-			ps.setString(5, vo.getEmail());
-			ps.setString(6, vo.getPhone());
-			// °ªÀ» Àü¼Û
-			cnt = ps.executeUpdate(); // Àü¼Û ÈÄ ½ÇÆĞ ¿©ºÎ °ª ¹İÈ¯
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			dbClose();
-		}
-		return cnt;
-	}
-	//È¸¿ø(VO) ÀüÃ¼ ¸®½ºÆ®(ArrayList) °¡Á®¿À±â
-	public ArrayList<MemberVO> memberList() {
-		String SQL = "select * from member";
-		getConnect();
-		ArrayList<MemberVO> list = new ArrayList<>();
-		try {
-			ps = conn.prepareStatement(SQL);
-			//°á°ú ÁıÇÕ À» ¹Ş¾Æ¿È
-			rs = ps.executeQuery(); // rs -> Ä¿¼­, ÄÃ·³À» °¡¸£Å´.
-			
-			while(rs.next()) {
-				int num =  rs.getInt("num");
-				String id =  rs.getString("id");
-				String pass =  rs.getString("pass");
-				String name =  rs.getString("name");
-				int age =  rs.getInt("age");
-				String email =  rs.getString("email");
-				String phone =  rs.getString("phone");
-				
-				MemberVO vo = new MemberVO(num, id, pass, name, age, email, phone);
-				list.add(vo);
-			}
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			dbClose();
-		}
-		return list; // memberlist
-	}
-	
-	public int memberDelete(int num) {
-		String SQL = "delete from member where num = ?";
-		getConnect();
-		int cnt = -1;
-		try {
-			ps=conn.prepareStatement(SQL);
-			ps.setInt(1, num); // Ã¹¹øÂ° ÆÄ¶ó¹ÌÅÍ¸®½Ã·¹ 2
-			cnt = ps.executeUpdate();
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			dbClose();
-		}
-		return cnt;
-	}
-	
-	public MemberVO memberContent(int num) {
-		String SQL = "select * from member where num = ?";
-		getConnect();
-		int cnt = -1;
-		MemberVO vo = null;
-		try {
-			ps=conn.prepareStatement(SQL);
-			ps.setInt(1, num); // Ã¹¹øÂ° ÆÄ¶ó¹ÌÅÍ¸®¿©¼­ 1
-			rs = ps.executeQuery();
-			if(rs.next()) {
-				//È¸¿ø ÇÑ¸íÀÇ Á¤º¸¸¦ °¡Á®¿Â ÈÄ VO¿¡ ¹­¾îÁØ´Ù.
-				num =  rs.getInt("num");
-				String id =  rs.getString("id");
-				String pass =  rs.getString("pass");
-				String name =  rs.getString("name");
-				int age =  rs.getInt("age");
-				String email =  rs.getString("email");
-				String phone =  rs.getString("phone");
-				vo = new MemberVO(num, id, pass, name, age, email, phone);
-			}
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			dbClose();
-		}
-		return vo;
-	}
-	
-	public int memberUpdate(MemberVO vo) {
-		String SQL = "update member set age=?, email = ?, phone = ? where num =?";
-		getConnect();
-		int cnt = -1;
-		try {
-			ps = conn.prepareStatement(SQL);
-			ps.setInt(1, vo.getAge());
-			ps.setString(2, vo.getEmail());
-			ps.setString(3, vo.getPhone());
-			ps.setInt(4, vo.getNum());
-			
-			cnt = ps.executeUpdate();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			dbClose();
-		}
-		return cnt;
-	}
-	
-	// µ¥ÀÌÅÍº£ÀÌ½º ¿¬°á ²÷±â
-	public void dbClose() {
-		try {
-			if (rs != null) rs.close();
-			if (ps != null) ps.close();
-			if (conn != null) conn.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+    private Connection conn;
+    private PreparedStatement ps;
+    private ResultSet rs;
+
+    //  ë°ì´í„°ë² ì´ìŠ¤ ì—°ê²°ê°ì²´ ìƒì„±
+    public void getConnect() {
+        String URL = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC&characterEncoding=UTF-8";
+        String user = "root";
+        String password ="rkwodml1";
+
+        // MySQL Driver Loading
+        try {
+            /*ì •ì ë¡œë”©
+             * DriverManager driver = new com.mys ql.jdbc.Driver();
+             * conn = driver.getConnection(URL, user, password);
+             */
+            // ë™ì ë¡œë”© - ì»´íŒŒì¼ ì‹œì ì—ëŠ” ë‹¨ìˆœ ë¬¸ìì—´, ì‹¤í–‰ ì§€ì ì— Driver classë¥¼ ë©”ëª¨ë¦¬ì— ì˜¬ë¦¼
+            Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection(URL, user, password);
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public int memberInsert(MemberVO vo) {
+        String SQL = "insert into member(id, pass, name, age, email, phone) values(?,?,?,?,?,?)";
+        //SQL ì „ì†¡ê°ì²´ ìƒì„±
+        getConnect();
+        int cnt = -1;
+        try {
+            ps = conn.prepareStatement(SQL);//ë¯¸ë¦¬ ì»´íŒŒì¼ì„ ì‹œí‚¨ë‹¤. ì†ë„ ë“± ì¥ì 
+            ps.setString(1, vo.getId());
+            ps.setString(2, vo.getPass());
+            ps.setString(3, vo.getName());
+            ps.setInt(4, vo.getAge());
+            ps.setString(5, vo.getEmail());
+            ps.setString(6, vo.getPhone());
+            // ê°’ì„ ì „ì†¡
+            cnt = ps.executeUpdate(); // ì „ì†¡ í›„ ì‹¤íŒ¨ ì—¬ë¶€ ê°’ ë°˜í™˜
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            dbClose();
+        }
+        return cnt;
+    }
+    //íšŒì›(VO) ì „ì²´ ë¦¬ìŠ¤íŠ¸(ArrayList) ê°€ì ¸ì˜¤ê¸°
+    public ArrayList<MemberVO> memberList() {
+        String SQL = "select * from member";
+        getConnect();
+        ArrayList<MemberVO> list = new ArrayList<>();
+        try {
+            ps = conn.prepareStatement(SQL);
+            //ê²°ê³¼ ì§‘í•© ì„ ë°›ì•„ì˜´
+            rs = ps.executeQuery(); // rs -> ì»¤ì„œ, ì»¬ëŸ¼ì„ ê°€ë¥´í‚´.
+
+            while(rs.next()) {
+                int num =  rs.getInt("num");
+                String id =  rs.getString("id");
+                String pass =  rs.getString("pass");
+                String name =  rs.getString("name");
+                int age =  rs.getInt("age");
+                String email =  rs.getString("email");
+                String phone =  rs.getString("phone");
+
+                MemberVO vo = new MemberVO(num, id, pass, name, age, email, phone);
+                list.add(vo);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            dbClose();
+        }
+        return list; // memberlist
+    }
+
+    public int memberDelete(int num) {
+        String SQL = "delete from member where num = ?";
+        getConnect();
+        int cnt = -1;
+        try {
+            ps=conn.prepareStatement(SQL);
+            ps.setInt(1, num); // ì²«ë²ˆì§¸ íŒŒë¼ë¯¸í„°ë¦¬ì‹œë ˆ 2
+            cnt = ps.executeUpdate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            dbClose();
+        }
+        return cnt;
+    }
+
+    public MemberVO memberContent(int num) {
+        String SQL = "select * from member where num = ?";
+        getConnect();
+        int cnt = -1;
+        MemberVO vo = null;
+        try {
+            ps=conn.prepareStatement(SQL);
+            ps.setInt(1, num); // ì²«ë²ˆì§¸ íŒŒë¼ë¯¸í„°ë¦¬ì—¬ì„œ 1
+            rs = ps.executeQuery();
+            if(rs.next()) {
+                //íšŒì› í•œëª…ì˜ ì •ë³´ë¥¼ ê°€ì ¸ì˜¨ í›„ VOì— ë¬¶ì–´ì¤€ë‹¤.
+                num =  rs.getInt("num");
+                String id =  rs.getString("id");
+                String pass =  rs.getString("pass");
+                String name =  rs.getString("name");
+                int age =  rs.getInt("age");
+                String email =  rs.getString("email");
+                String phone =  rs.getString("phone");
+                vo = new MemberVO(num, id, pass, name, age, email, phone);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            dbClose();
+        }
+        return vo;
+    }
+
+    public int memberUpdate(MemberVO vo) {
+        String SQL = "update member set age=?, email = ?, phone = ? where num =?";
+        getConnect();
+        int cnt = -1;
+        try {
+            ps = conn.prepareStatement(SQL);
+            ps.setInt(1, vo.getAge());
+            ps.setString(2, vo.getEmail());
+            ps.setString(3, vo.getPhone());
+            ps.setInt(4, vo.getNum());
+
+            cnt = ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            dbClose();
+        }
+        return cnt;
+    }
+
+    // ë°ì´í„°ë² ì´ìŠ¤ ì—°ê²° ëŠê¸°
+    public void dbClose() {
+        try {
+            if (rs != null) rs.close();
+            if (ps != null) ps.close();
+            if (conn != null) conn.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 
 }

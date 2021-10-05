@@ -9,17 +9,17 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/rc.do")
 public class RedirectController extends HttpServlet {
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		
-		// forward ½Ç½À Àü redirect ±â¹ı º¹½À//
-		
-		String data = "apple";
-		// View page(jsp)·Î Àü´Ş ÈÄ Ãâ·Â
-		response.sendRedirect("view/redirect.jsp?data="+data);
-	}
+    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+
+        // forward ì‹¤ìŠµ ì „ redirect ê¸°ë²• ë³µìŠµ//
+
+        String data = "apple";
+        // View page(jsp)ë¡œ ì „ë‹¬ í›„ ì¶œë ¥
+        response.sendRedirect("view/redirect.jsp?data="+data);
+    }
 }
 
 /*
- redirect ±â¹ıÀº(queryString) Å¬¶óÀÌ¾ğÆ®°¡ ¼­¹ö¿¡ ±âÁ¸ ¿äÃ»À» ²÷°í »õ·Î¿î ¿äÃ»À» º¸³»¹Ç·Î, request °´Ã¼ ¿ª½Ã »õ·Ó°Ô ¹Ù²ï´Ù.
- 
+ redirect ê¸°ë²•ì€(queryString) í´ë¼ì´ì–¸íŠ¸ê°€ ì„œë²„ì— ê¸°ì¡´ ìš”ì²­ì„ ëŠê³  ìƒˆë¡œìš´ ìš”ì²­ì„ ë³´ë‚´ë¯€ë¡œ, request ê°ì²´ ì—­ì‹œ ìƒˆë¡­ê²Œ ë°”ë€ë‹¤.
+
  */

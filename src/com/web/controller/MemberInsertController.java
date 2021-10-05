@@ -15,44 +15,44 @@ import com.web.model.MemberVO;
 
 public class MemberInsertController implements Controller{
 
-	@Override
-	public String requestHandler(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-				
-		String ctx = request.getContextPath(); //jsp-tutorial
+    @Override
+    public String requestHandler(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
 
-		// 1.ÆÄ¸®¹ÌÅÍ ¼öÁı(VO)
-				String id = request.getParameter("id");
-				String pass = request.getParameter("pass");
-				String name= request.getParameter("name");
-				int age = Integer.parseInt(request.getParameter("age"));
-				String email= request.getParameter("email");
-				String phone = request.getParameter("phone");
-				
-				/* »ı¼ºÀÚ·Î ¹Ù·Î setÇØÁÖ±â Àß¾È¾²ÀÎ´Ù.
+        String ctx = request.getContextPath(); //jsp-tutorial
+
+        // 1.íŒŒë¦¬ë¯¸í„° ìˆ˜ì§‘(VO)
+        String id = request.getParameter("id");
+        String pass = request.getParameter("pass");
+        String name= request.getParameter("name");
+        int age = Integer.parseInt(request.getParameter("age"));
+        String email= request.getParameter("email");
+        String phone = request.getParameter("phone");
+
+				/* ìƒì„±ìë¡œ ë°”ë¡œ setí•´ì£¼ê¸° ì˜ì•ˆì“°ì¸ë‹¤.
 				MemberVO vo = new MemberVO(id, pass, name, age, email, phone);
 				*/
-				MemberVO vo = new MemberVO();
-				vo.setId(id);
-				vo.setPass(pass);
-				vo.setName(name);
-				vo.setAge(age);
-				vo.setEmail(email);
-				vo.setPhone(phone);
-				
-				String nextPage = null;
-				// model°úÀÇ ¿¬µ¿
-				MemberDAO dao = new MemberDAO();
-				int cnt = dao.memberInsert(vo);
-				if(cnt == 1) {
-					//¼º°ø
-					nextPage = "redirect:"+ctx+"/memberList.do";
-				}else {
-					//½ÇÆĞ ¿¹¿Ü°´Ã¼ »ı¼º ÈÄ WAS¿¡°Ô Àü´Ş
-					throw new ServletException("not insert");
-				}
-				return nextPage;
-	}
-	
+        MemberVO vo = new MemberVO();
+        vo.setId(id);
+        vo.setPass(pass);
+        vo.setName(name);
+        vo.setAge(age);
+        vo.setEmail(email);
+        vo.setPhone(phone);
+
+        String nextPage = null;
+        // modelê³¼ì˜ ì—°ë™
+        MemberDAO dao = new MemberDAO();
+        int cnt = dao.memberInsert(vo);
+        if(cnt == 1) {
+            //ì„±ê³µ
+            nextPage = "redirect:"+ctx+"/memberList.do";
+        }else {
+            //ì‹¤íŒ¨ ì˜ˆì™¸ê°ì²´ ìƒì„± í›„ WASì—ê²Œ ì „ë‹¬
+            throw new ServletException("not insert");
+        }
+        return nextPage;
+    }
+
 
 }
