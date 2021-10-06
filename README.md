@@ -3,7 +3,11 @@
 **MVC3** is consist of view(jsp) & controller(servlet) & model 
 
 ### controller(servlet)
-insert(redirect to showListController) / delete(redirect to showListController) / update(redirect to showListController) / showList(forward to jsp and Redrirect to Register.html) / showPrivateContent(forward to jsp)
+- insert(redirect to showListController) 
+- delete(redirect to showListController)
+- update(redirect to showListController)
+- showList(forward to jsp and Redrirect to Register.html)
+- showPrivateContent(forward to jsp)
 ### view(jsp)
 showList showPrivateContent
 ### model
