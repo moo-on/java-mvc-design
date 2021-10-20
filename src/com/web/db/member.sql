@@ -10,13 +10,14 @@ create table member(
 
                        unique key(id)
 );
--- SQL(CRUD), JDBC
+
 -- 데이터베이스 선택
 use test;
--- 검색
 
+-- 검색
 select * from member;
 
+-- SQL(CRUD), JDBC
 -- insert
 insert into member(id, pass, name, age, email, phone)
     value('admin','admin','관리자','19','ex@gmail.com','010-0000-0000');
