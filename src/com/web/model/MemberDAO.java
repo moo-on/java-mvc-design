@@ -12,14 +12,14 @@ import java.util.List;
 
 public class MemberDAO {
 
-    private SqlSessionFactory sqlSessionFactory;
+    private static SqlSessionFactory sqlSessionFactory;
 
     //  초기화 블럭, 프로그램 실행 시 딱 한번만 실행되는 코드 영역.
     static {
         try {
             String resource = "com/web/mybatis/config.xml";
             InputStream inputStream = Resources.getResourceAsStream(resource); //읽기, 연동
-            SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+            sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -70,8 +70,6 @@ public class MemberDAO {
         return cnt;
     }
 }
-
-
 //    private Connection conn;
 //    private PreparedStatement ps;
 //    private ResultSet rs;
