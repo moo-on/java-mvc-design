@@ -5,4 +5,24 @@ MVC1 is consist of only controller & model
 ### controller
 insert delete update showList showPrivateContent
 ### model
-ModelVO & ModelDVO (use JDBC)
+ModelVO & ModelDAO (use JDBC)
+
+---
+### [Controller]
+This serlvet show member list.  
+insertion html code, readability is poor. ↓   
+[MemberListController.java](https://github.com/moo-on/jsp-tutorial/blob/MVC1/src/com/web/controller/MemberListController.java)  
+
+This servlet show member private content.  
+insertion html code, readability is poor. ↓   
+[MemberContentController.java](https://github.com/moo-on/jsp-tutorial/blob/MVC1/src/com/web/controller/MemberContentController.java)   
+
+This serlvet only interaction DB. and Redirection member List Page ↓  
+[MemberDeleteController.java](https://github.com/moo-on/jsp-tutorial/blob/MVC1/src/com/web/controller/MemberDeleteController.java)  
+[MemberInsertController.java](https://github.com/moo-on/jsp-tutorial/blob/MVC1/src/com/web/controller/MemberInsertController.java)  
+[MemberUpdateController.java](https://github.com/moo-on/jsp-tutorial/blob/MVC1/src/com/web/controller/MemberUpdateController.java)  
+
+### [Model]
+VO and DAO is interaction MySQL ↓  
+[MemberVO](https://github.com/moo-on/jsp-tutorial/blob/MVC1/src/com/web/model/MemberVO.java)   
+[MemberDAO](https://github.com/moo-on/jsp-tutorial/blob/MVC1/src/com/web/model/MemberDAO.java)  
