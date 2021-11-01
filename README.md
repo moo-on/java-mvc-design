@@ -8,7 +8,7 @@ insert delete update showList showPrivateContent
 ModelVO & ModelDVO (use JDBC)
 
 ---
-### [JSP]
+### [View]
 This JSP show member list.  
 insertion java code to scriptlet, Convenience of development is low. ↓   
 [MemberListController.java](https://github.com/moo-on/jsp-tutorial/blob/MVC2/WebContent/member/memberList.jsp)  
