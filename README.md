@@ -9,7 +9,7 @@ ModelVO & ModelDVO (use JDBC)
 
 ---
 ### [View]
-* insertion java code to scriptlet, Convenience of development is low. 
+* Insertion scriptlet to JSP, Convenience of development is low. 
  
 This JSP show member list.↓       
 [MemberListController.java](https://github.com/moo-on/jsp-tutorial/blob/MVC2/WebContent/member/memberList.jsp)  
