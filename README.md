@@ -13,8 +13,9 @@
 ### view(jsp)
 - showList
 - showPrivateContent
-### model
+### model  
 ModelVO & ModelDVO (use JDBC to MySQL)
+
 ---
 ### [Controller]
 * **all requests receive Controller and forward, JSP address not exposed.**  
