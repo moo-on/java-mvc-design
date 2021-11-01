@@ -9,12 +9,12 @@ ModelVO & ModelDAO (use JDBC)
 
 ---
 ### [Controller]
-This serlvet show member list.  
-insertion html code, readability is poor. ↓   
+* insertion html code, readability is poor
+
+This serlvet show member list.↓     
 [MemberListController.java](https://github.com/moo-on/jsp-tutorial/blob/MVC1/src/com/web/controller/MemberListController.java)  
 
-This servlet show member private content.  
-insertion html code, readability is poor. ↓   
+This servlet show member private content.↓     
 [MemberContentController.java](https://github.com/moo-on/jsp-tutorial/blob/MVC1/src/com/web/controller/MemberContentController.java)   
 
 This serlvet only interaction DB. and Redirection member List Page ↓  
