@@ -1,5 +1,7 @@
 # jsp-tutorial
 ![MVC2](https://user-images.githubusercontent.com/70089259/132357704-02077372-9fec-4d85-b44d-5e0ae8a4fa66.png)  
+![image](https://user-images.githubusercontent.com/70089259/139640979-833374ad-06e8-452a-a989-59dcaaf09cac.png)
+
 **MVC3** is consist of view(jsp) & controller(servlet) & model 
 
 ### controller(servlet)
