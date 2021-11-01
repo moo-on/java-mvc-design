@@ -9,12 +9,11 @@ ModelVO & ModelDVO (use JDBC)
 
 ---
 ### [View]
-This JSP show member list.  
-insertion java code to scriptlet, Convenience of development is low. ↓   
+* insertion java code to scriptlet, Convenience of development is low. 
+This JSP show member list.↓     
 [MemberListController.java](https://github.com/moo-on/jsp-tutorial/blob/MVC2/WebContent/member/memberList.jsp)  
 
-This JSP show member private content.  
-insertion java code to scriptlet, Convenience of development is low. ↓   
+This JSP show member private content.↓     
 [MemberContentController.java](https://github.com/moo-on/jsp-tutorial/blob/MVC2/WebContent/member/memberContent.jsp)   
 
 This JSP only interaction DB. and Redirection member List Page ↓  
