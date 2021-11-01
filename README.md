@@ -4,18 +4,6 @@
 
 **MVC3** is consist of **view(jsp) & controller(servlet) & model** 
 
-### controller(servlet)
-- showList(forward to jsp and Redrirect to Register.html)
-- showPrivateContent(forward to jsp)
-- insert(redirect to showListController) 
-- delete(redirect to showListController)
-- update(redirect to showListController)
-### view(jsp)
-- showList
-- showPrivateContent
-### model  
-ModelVO & ModelDVO (use JDBC to MySQL)
-
 ---
 ### [Controller]
 * **all requests receive Controller and forward, JSP address not exposed.**  
