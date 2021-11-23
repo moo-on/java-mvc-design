@@ -1,14 +1,8 @@
 package com.web.frontcontroller;
 
-import java.util.HashMap;
+import com.web.controller.*;
 
-import com.web.controller.Controller;
-import com.web.controller.MemberContentController;
-import com.web.controller.MemberDeleteController;
-import com.web.controller.MemberInsertController;
-import com.web.controller.MemberListController;
-import com.web.controller.MemberRegisterController;
-import com.web.controller.MemberUpdateController;
+import java.util.HashMap;
 
 public class HandlerMapping {
     private HashMap<String, Controller> mappings;
@@ -21,6 +15,7 @@ public class HandlerMapping {
         mappings.put("/memberDelete.do", new MemberDeleteController());
         mappings.put("/memberContent.do", new MemberContentController());
         mappings.put("/memberRegister.do", new MemberRegisterController());
+        mappings.put("/memberLogin.do", new MemberLoginController());
     }
     // Controller 객체 반환
     public Controller getController(String key) {
