@@ -76,8 +76,6 @@ public class MemberDAO {
         String user_name = session.selectOne("memberLogin", vo);
         return user_name;
     }
-
-
 }
 
 
