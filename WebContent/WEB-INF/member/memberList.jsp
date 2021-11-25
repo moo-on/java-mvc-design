@@ -45,7 +45,7 @@
   <h2>회원관리 시스템</h2>
   <div class="panel panel-default">
     <div class="panel-heading">
-      <c:if test = "${sessionScope.userId == null || sessionScope.userID == ''}">
+      <c:if test = "${sessionScope.userID == null || sessionScope.userID == ''}">
       <form class="form-inline" action="memberLogin.do" method = "post">
         <div class="form-group">
           <label for="user_id">ID:</label>
