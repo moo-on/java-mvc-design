@@ -1,14 +1,11 @@
 package com.web.controller;
 
-import java.io.IOException;
+import com.web.model.MemberDAO;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.web.model.MemberDAO;
+import java.io.IOException;
 
 /**
  * Servlet implementation class MemberDeleteController
@@ -28,6 +25,7 @@ public class MemberDeleteController implements Controller {
 		int cnt = dao.memberDelete(num);
 		String nextPage = null;
 		if (cnt>0) {
+			request.getSession().invalidate();
 			nextPage = "redirect:"+ctx+"/memberList.do";
 		}
 		else {
