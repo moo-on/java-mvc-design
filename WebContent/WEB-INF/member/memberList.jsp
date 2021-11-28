@@ -25,6 +25,10 @@
   location.href="memberDelete.do?num="+num; // ?num=12
   }
 
+  function logout(){
+    location.href="<c:url value = "/memberLogout.do"></c:url>
+  }
+
   function check(){
     if($('#user_id').val() == ''){
       alert("아이디를 입력하세요")
@@ -60,7 +64,7 @@
       </c:if>
       <c:if test = "${sessionScope.userID != null && sessionScope.userID !=''}">
         ${sessionScope.userName}님 환영합니다.
-        <button type = "button" class = "btn btn-warning">로그아웃</button>
+        <button type = "button" class = "btn btn-warning" onclick ="logout()">로그아웃</button>
       </c:if>
     </div>
     <div class="panel-body">

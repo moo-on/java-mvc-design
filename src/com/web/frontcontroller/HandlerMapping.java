@@ -16,6 +16,7 @@ public class HandlerMapping {
         mappings.put("/memberContent.do", new MemberContentController());
         mappings.put("/memberRegister.do", new MemberRegisterController());
         mappings.put("/memberLogin.do", new MemberLoginController());
+        mappings.put("/memberLogout.do", new MemberLogoutController());
     }
     // Controller 객체 반환
     public Controller getController(String key) {
