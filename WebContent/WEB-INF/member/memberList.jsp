@@ -26,7 +26,7 @@
   }
 
   function logout(){
-    location.href="<c:url value = "/memberLogout.do"></c:url>
+    location.href="<c:url value = "/memberLogout.do"></c:url>";
   }
 
   function check(){
